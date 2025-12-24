@@ -17,6 +17,7 @@ void enqueue(LQueue* &front,LQueue* &rear,int x){
     else{
     temp=rear;
     ttemp=new LQueue();
+    if(ttemp==NULL) return;
     rear=ttemp;
     ttemp->data=x;
     temp->next=ttemp;
@@ -31,7 +32,9 @@ int dequeue(LQueue* &front,LQueue* &rear){
         return 0;    
     }
     else{
-        if(front==rear){
+        if(front==NULL)
+         return -1;
+        else if(front==rear){
         int y=front->data;
         delete front;
         front=rear=NULL;
